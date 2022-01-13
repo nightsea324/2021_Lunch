@@ -19,7 +19,7 @@ class CreateTableMembers extends Migration
             $table->string('memberPassword');
             $table->string('memberEmail');
             $table->boolean('isAdmin')->default(0);
-			$table->string('api_token');
+			$table->string('api_token')->nullable();
             $table->timestamps();
         });
     }

@@ -20,7 +20,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<img src="index_img/lunch.png" width="30" height="30" class="d-inline-block align-top" alt="">
-  		<a class="navbar-brand" href="/index">午餐呷啥</a>
+  		<a class="navbar-brand" href="{{ route('recipe.index')}}">午餐呷啥</a>
   		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
   		</button>
@@ -28,13 +28,10 @@
   		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav w-100">
 				<li class="nav-item align-item-center" style="width:5rem;">
-					<a class="nav-link" href="part1.php">分頁1</a>
+					<a class="nav-link" href="{{ route('recipe.create')}}">新增食譜</a>
 				</li>
 				<li class="nav-item align-item-center" style="width:5rem;">
-					<a class="nav-link" href="part2.php">分頁2</a>
-				</li>
-				<li class="nav-item align-item-center" style="width:5rem;">
-					<a class="nav-link" href="part3.php">分頁3</a>
+					<a class="nav-link" href="part2.php">我的食譜</a>
 				</li>
 				<div class="container text-center">
 					<div class="row">
@@ -45,7 +42,7 @@
 					</div>
 				</div>
 				<li class="nav-item float-right" style="width:7rem;">
-					<a class="nav-link" href="/login"><img src="index_img/enter.png" width="20" height="20" class="d-inline-block align-top" alt=""> 登入</a>
+					<a class="nav-link" href="{{ route('member.index')}}"><img src="index_img/enter.png" width="20" height="20" class="d-inline-block align-top" alt=""> 登入</a>
 				</li>
 			</ul>
   		</div>
@@ -82,7 +79,7 @@
 					<button type="submit" class="btn btn-primary btn-lg">確認</button>
 				</div>
 				<div class="px-5 py-1">
-					<a class="nav-link active" href="/register"><button type="button" class="btn btn-primary btn-lg">註冊</button></a>
+				<a href="{{ route('register.index')}}"><button type="button" class="btn btn-primary btn-lg">註冊</button></a>
 				</div>
 
 			</div>

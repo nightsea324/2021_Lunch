@@ -43,7 +43,7 @@
 					</div>
 				</div>
 				<li class="nav-item float-right" style="width:7rem;">
-					<a class="nav-link" href="{{ route('member.index')}}"><img src="index_img/enter.png" width="20" height="20" class="d-inline-block align-top" alt=""> 登入</a>
+					<a class="nav-link" href="{{ route('login.index')}}"><img src="index_img/enter.png" width="20" height="20" class="d-inline-block align-top" alt=""> 登入</a>
 				</li>
 			</ul>
   		</div>

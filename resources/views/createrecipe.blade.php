@@ -58,6 +58,7 @@
     </div>
     <!-- input group -->
     <form method="post" action="{{ route('recipe.store') }}">
+      @csrf
       <div class="form-group">
         <label for="exampleFormControlFile1">上傳成果照片</label>
         <input type="file" class="form-control-file" id="exampleFormControlFile1" multiple >
@@ -102,7 +103,7 @@
         <label for="exampleFormControlFile1">製作時間</label>
         <input type="text" class="form-control" placeholder="30分鐘">
       </div> -->
-      <button type="submit" class="btn btn-primary my-3">Submit</button>
+      <button type="submit" class="btn btn-primary my-3">新增</button>
     </form>
     <!-- input group -->
   </div>
