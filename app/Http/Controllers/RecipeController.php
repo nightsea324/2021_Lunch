@@ -16,7 +16,8 @@ class RecipeController extends Controller
     {
         //
         $recipecases = Recipe::all();
-        return view('index', compact('recipecases'));
+        $username = session('username');
+        return view('index', compact('recipecases'), ['username' => $username]);
     }
 
     /**

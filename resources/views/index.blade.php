@@ -28,12 +28,14 @@
 
   		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav w-100">
+				@if(isset($username))
 				<li class="nav-item align-item-center" style="width:5rem;">
 					<a class="nav-link" href="{{ route('recipe.create')}}">新增食譜</a>
 				</li>
 				<li class="nav-item align-item-center" style="width:5rem;">
 					<a class="nav-link" href="part2.php">我的食譜</a>
 				</li>
+				@endif
 				<div class="container text-center">
 					<div class="row">
 						<form class="form-inline">
@@ -42,9 +44,18 @@
 						</form>
 					</div>
 				</div>
-				<li class="nav-item float-right" style="width:7rem;">
-					<a class="nav-link" href="{{ route('login.index')}}"><img src="index_img/enter.png" width="20" height="20" class="d-inline-block align-top" alt=""> 登入</a>
+				@if(isset($username))
+				<li class="nav-item float-right" style="width:10rem;">
+					<a class="nav-link" href="login"><img src="index_img/enter.png" width="20" height="20" class="d-inline-block align-top" alt=""> 歡迎，{{ $username }}</a>
 				</li>
+				<li class="nav-item float-right" style="width:7rem;">
+					<a class="nav-link" href="logout">登出</a>
+				</li>
+				@else
+				<li class="nav-item float-right" style="width:7rem;">
+					<a class="nav-link" href="login"><img src="index_img/enter.png" width="20" height="20" class="d-inline-block align-top" alt=""> 登入</a>
+				</li>
+				@endif
 			</ul>
   		</div>
 	</nav>

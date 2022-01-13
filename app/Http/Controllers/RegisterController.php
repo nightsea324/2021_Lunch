@@ -42,6 +42,7 @@ class RegisterController extends Controller
             'memberPassword' => 'required',
             'memberEmail' => 'required|email',
         ]);
+        $validatedData['memberPassword'] = password_hash($request->memberPassword, PASSWORD_DEFAULT);
         $show = Member::create($validatedData);
    
         return redirect('/recipe')->with('success', 'Recipe Case is successfully saved');

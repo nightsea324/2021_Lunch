@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\models\Member;
+use DB;
 
 class LoginController extends Controller
 {
@@ -81,5 +83,33 @@ class LoginController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function login(Request $request)
+    {
+        DB::connection('mysql');
+        // $userData = DB::select("SELECT * FROM members WHERE memberName=?", [$request->memberName]);
+        $userData = DB::select("SELECT * FROM members WHERE memberName=?", [$request->memberName]);
+
+        if(!isset($userData[0]->memberName)){
+
+            return view('login', ['err'=>"使用者不存在"]);
+
+        }elseif(password_verify($request->memberPassword, $userData[0]->memberPassword)){
+
+            session(['username' => $userData[0]->memberName]);
+            return redirect('/recipe');
+
+        }else{
+
+            return view('login', ['err'=>"密碼錯誤"]);
+
+        }
+    }
+
+    public function logout()
+    {
+        session()->forget('username');
+        return redirect('/');
     }
 }
