@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\models\Recipe;
 
-class MemberController extends Controller
+class RecipeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,8 @@ class MemberController extends Controller
     public function index()
     {
         //
-        return view('login');
+        $recipecases = Recipe::all();
+        return view('index', compact('recipecases'));
     }
 
     /**
@@ -25,6 +27,7 @@ class MemberController extends Controller
     public function create()
     {
         //
+        return view('createrecipe');
     }
 
     /**
@@ -36,6 +39,14 @@ class MemberController extends Controller
     public function store(Request $request)
     {
         //
+        $validatedData = $request->validate([
+            'recipeName' => 'required|max:255',
+            'ingredients' => 'required|max:255',
+            'step' => 'required|max:255',
+        ]);
+        $show = Recipe::create($validatedData);
+   
+        return redirect('/recipe')->with('success', 'Recipe Case is successfully saved');
     }
 
     /**
@@ -47,6 +58,8 @@ class MemberController extends Controller
     public function show($id)
     {
         //
+        $recipecases = Recipe::findOrFail($id);
+        return view('lookrecipe', compact('recipecases'));
     }
 
     /**
@@ -58,6 +71,8 @@ class MemberController extends Controller
     public function edit($id)
     {
         //
+        $recipecases = Recipe::findOrFail($id);
+        return view('editrecipe', compact('recipecases'));
     }
 
     /**
@@ -70,6 +85,13 @@ class MemberController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $validatedData = $request->validate([
+            'recipeName' => 'required|max:255',
+            'ingredients' => 'required|max:255',
+            'step' => 'required|max:255',
+        ]);
+        Recipe::where('recpieId',$id)->update($validatedData);
+        return redirect('/recipe')->with('success', 'recipe Case Data is successfully updated');
     }
 
     /**
@@ -81,10 +103,8 @@ class MemberController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function login($id)
-    {
-        //
+        $coronacase = Recipe::findOrFail($id);
+        $coronacase->delete();
+        return redirect('/recipe')->with('success', 'recipe Case Data is successfully deleted');
     }
 }
