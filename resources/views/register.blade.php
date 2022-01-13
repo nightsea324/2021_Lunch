@@ -81,7 +81,8 @@
 	<div class="row d-flex justify-content-center align-items-center h-100">
 	  <div class="col-xl-9">
 		<h1 class="text-white mb-4 bg-info text-center" style="border-radius: 15px;">註冊</h1>
-		<form method="post" action="">
+		<form method="post" action="{{ route('register.store') }}">
+			@csrf
 			<div class="card" style="border-radius: 15px;">
 			<div class="card-body">
 				<div class="row align-items-center pt-4 pb-3">
@@ -89,7 +90,7 @@
 					<h6 class="mb-0">*姓名</h6>
 				</div>
 				<div class="col-md-9 pe-5">
-					<input type="text" class="form-control form-control-md" placeholder="請輸入姓名" required>
+					<input type="text" class="form-control form-control-md" placeholder="請輸入姓名" required name="memberName">
 				</div>
 				</div>
 				<hr class="mx-n3">
@@ -98,7 +99,7 @@
 					<h6 class="mb-0">*電子郵件</h6>
 				</div>
 				<div class="col-md-9 pe-5">
-					<input type="email" class="form-control form-control-md" placeholder="example@example.com" required>
+					<input type="email" class="form-control form-control-md" placeholder="example@example.com" required name="memberEmail">
 				</div>
 				</div>
 				<hr class="mx-n3">
@@ -107,7 +108,7 @@
 					<h6 class="mb-0">*密碼</h6>
 				</div>
 				<div class="col-md-9 pe-5">
-					<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+					<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required name="memberPassword">
 				</div>
 				</div>
 				<hr class="mx-n3">

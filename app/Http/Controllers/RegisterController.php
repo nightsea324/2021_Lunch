@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\models\Member;
 
 class RegisterController extends Controller
 {
@@ -36,6 +37,14 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
         //
+        $validatedData = $request->validate([
+            'memberName' => 'required|max:255',
+            'memberPassword' => 'required',
+            'memberEmail' => 'required|email',
+        ]);
+        $show = Member::create($validatedData);
+   
+        return redirect('/recipe')->with('success', 'Recipe Case is successfully saved');
     }
 
     /**
