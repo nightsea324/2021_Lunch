@@ -21,7 +21,7 @@
 	<!-- 頁首開始 -->
     @section('head')
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<img src="index_img/lunch.png" width="30" height="30" class="d-inline-block align-top" alt="">
+		<img src="/index_img/lunch.png" width="30" height="30" class="d-inline-block align-top" alt="">
   		<a class="navbar-brand" href="{{ route('recipe.index')}}">午餐呷啥</a>
   		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -34,7 +34,7 @@
 					<a class="nav-link" href="{{ route('recipe.create')}}">新增食譜</a>
 				</li>
 				<li class="nav-item align-item-center" style="width:5rem;">
-					<a class="nav-link" href="list">我的食譜</a>
+					<a class="nav-link" href="/list">我的食譜</a>
 				</li>
 				@else
 				<li class="nav-item align-item-center" style="width:5rem;">					
@@ -52,14 +52,14 @@
 				</div>
 				@if(isset($username))
 				<li class="nav-item float-right" style="width:10rem;">
-					<a class="nav-link"><img src="index_img/enter.png" width="20" height="20" class="d-inline-block align-top" alt=""> 歡迎，{{ $username }}</a>
+					<a class="nav-link">歡迎，{{ $username }}</a>
 				</li>
 				<li class="nav-item float-right" style="width:7rem;">
-					<a class="nav-link" href="logout">登出</a>
+					<a class="nav-link" href="/logout"><img src="/index_img/enter.png" width="20" height="20" class="d-inline-block align-top" alt=""> 登出</a>
 				</li>
 				@else
 				<li class="nav-item float-right" style="width:7rem;">
-					<a class="nav-link" href="login"><img src="index_img/enter.png" width="20" height="20" class="d-inline-block align-top" alt=""> 登入</a>
+					<a class="nav-link" href="/login"><img src="/index_img/enter.png" width="20" height="20" class="d-inline-block align-top" alt=""> 登入</a>
 				</li>
 				@endif
 			</ul>

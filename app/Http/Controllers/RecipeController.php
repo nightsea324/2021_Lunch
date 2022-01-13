@@ -62,8 +62,12 @@ class RecipeController extends Controller
     public function show($id)
     {
         //
+        DB::connection('mysql');
         $recipecases = Recipe::findOrFail($id);
-        return view('lookrecipe', compact('recipecases'));
+        $otherrecipecases = Recipe::all();
+        $boardcases = DB::select("SELECT * FROM boards WHERE recipeId=?", [$id]);
+        $username = session('username');
+        return view('lookrecipe', compact('recipecases','otherrecipecases','boardcases'), ['username' => $username,'recipeId' => $id]);
     }
 
     public function list()
@@ -90,7 +94,8 @@ class RecipeController extends Controller
     {
         //
         $recipecases = Recipe::findOrFail($id);
-        return view('editrecipe', compact('recipecases'));
+        $username = session('username');
+        return view('editrecipe', compact('recipecases'), ['username' => $username]);
     }
 
     /**
@@ -121,8 +126,9 @@ class RecipeController extends Controller
     public function destroy($id)
     {
         //
-        $coronacase = Recipe::findOrFail($id);
-        $coronacase->delete();
+        $recipecases = Recipe::findOrFail($id);
+        $recipecases->delete();
+        $username = session('username');
         return redirect('/recipe')->with('success', 'recipe Case Data is successfully deleted');
     }
 }

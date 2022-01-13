@@ -64,7 +64,7 @@
 					@foreach($recipecases as $case)
 						<div class="col mx-auto py-4">	
 							<div class="card rounded" style="width: 19rem;">
-								<img class="card-img-top" src="index_img/chiahan.jpg" alt="Card image cap">
+								<img class="card-img-top" src="/index_img/chiahan.jpg" alt="Card image cap">
 								<div class="card-body">
 									<h5 class="card-title">{{$case->recipeName}}</h5>
 									<p class="card-text">{{$case->ingredients}}</p>

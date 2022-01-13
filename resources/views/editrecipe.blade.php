@@ -25,7 +25,7 @@
   <div class="container">
     <div class="row">
       <div class="col mx-auto py-4">
-        <h4 class="text-center font-weight-bold"><img src="index_img/edit.png" width="30" height="30" class="d-inline-block align-items-center" alt=""> 編輯食譜</h4>
+        <h4 class="text-center font-weight-bold"><img src="/index_img/edit.png" width="30" height="30" class="d-inline-block align-items-center" alt=""> 編輯食譜</h4>
       </div>
     </div>
     <!-- input group -->

@@ -31,40 +31,22 @@
   <div class="row">
     <div class="col-sm-4 bg-info rounded">
       <h4 class="font-weight-bold py-3">相關食譜</h4>
-        <div class="container">
-          <div class="row">
-            <div class="col mx-auto py-4 pl-5">  
-              <div class="card rounded" style="width: 15rem;">
-                <img class="card-img-top" src="index_img/chiahan.jpg" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">炒飯</h5>
-                  <p class="card-text">炒飯的做法</p>
-                  <a href="#" class="btn btn-primary">查看食譜</a>
-                </div>
-              </div>
-            </div>
-            <div class="col mx-auto py-4 pl-5">  
-              <div class="card rounded" style="width: 15rem;">
-                <img class="card-img-top" src="index_img/chiahan.jpg" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">炒飯</h5>
-                  <p class="card-text">炒飯的做法之類的東西</p>
-                  <a href="#" class="btn btn-primary">查看食譜</a>
-                </div>
-              </div>
-            </div>
-            <div class="col mx-auto py-4 pl-5">  
-              <div class="card rounded" style="width: 15rem;">
-                <img class="card-img-top" src="index_img/chiahan.jpg" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">炒飯</h5>
-                  <p class="card-text">炒飯的做法之類的簡介介紹</p>
-                  <a href="#" class="btn btn-primary">查看食譜</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+			<div class="container">
+				<div class="row">
+					@foreach($otherrecipecases as $case)
+						<div class="col mx-auto py-4">	
+							<div class="card rounded" style="width: 19rem;">
+								<img class="card-img-top" src="/index_img/chiahan.jpg" alt="Card image cap">
+								<div class="card-body">
+									<h5 class="card-title">{{$case->recipeName}}</h5>
+									<p class="card-text">{{$case->ingredients}}</p>
+									<a href="{{ route('recipe.show', $case->recpieId)}}" class="btn btn-primary">查看食譜</a>
+								</div>
+							</div>
+						</div>
+					@endforeach
+				</div>
+			</div>
     </div>
 
     <div class="col-sm-8 order-first rounded imgsize">
@@ -82,11 +64,12 @@
       <div class="row">
         <div class="col-sm">
           <h2>{{ $recipecases->recipeName }}</h2>
-          <h5><small class="bg-light rounded"> 上傳日期 {{ $recipecases->created_at }} </small></h5>
+          <h5><small class="bg-light rounded"> 上傳日期 ： {{ $recipecases->created_at }} </small></h5>
+          <h5><small class="bg-light rounded"> 上傳者 ： {{ $recipecases->memberName }} </small></h5>
           <h5><span></span></h5><br>
         </div>
         <div class="col-sm imgsize2">
-          <img src="index_img/chiahan.jpg" class="d-inline-block rounded" alt="">
+          <img src="/index_img/chiahan.jpg" class="d-inline-block rounded" alt="">
         </div>
       </div>
       <div class="row">
@@ -104,58 +87,35 @@
       <hr>
 
       <h4>留言感想</h4>
-      <form>
+      @if(isset($username))
+      <form method="post" action="{{ route('board.store') }}">
+      @csrf
         <div class="form-group">
-          <textarea class="form-control" rows="3" placeholder="請輸入留言..." required name = "context"></textarea>
+          <textarea class="form-control" rows="3" placeholder="請輸入留言..." required name = "content"></textarea>
         </div>
+        <input type="hidden" name="recipeId" value="{{$recipeId}}">
+        <input type="hidden" name="memberName" value={{$username}} >
         <button type="submit" class="btn btn-success">確認</button>
       </form>
+      @else
+      <div class="form-group">
+      </div>
+      <a class="nav-link" href="/login"><button type="button" class="btn btn-success">請先登入</button></a>
+      @endif
+
       <br><br>
       
-      <p class="font-weight-bold"><span class="badge badge-secondary">2</span> 則回應:</p><br>
-      
+      <p class="font-weight-bold"><span class="badge badge-secondary">{{count($boardcases)}}</span> 則回應:</p><br>
       <div class="row">
+      @foreach($boardcases as $case)
         <div class="col-sm-2 text-center">
-          <img src="index_img/lunch.png" class="rounded-circle" height="65" width="65" alt="Avatar">
+          <img src="/index_img/lunch.png" class="rounded-circle" height="65" width="65" alt="Avatar">
         </div>
         <div class="col-sm-10">
-          <h4>留言者姓名 <small>2021/12/28</small></h4>
-          <p>好吃之類的</p>
-          <form class="py-3">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="回覆留言...">
-              <div class="input-group-append">
-                <button class="btn btn-outline-success" type="submit">確認</button>
-              </div>
-            </div>
-          </form>
+          <h4>留言者 {{$case->memberName}} <small>{{$case->created_at}}</small></h4>
+          <p>{{$case->content}}</p>          
         </div>
-        <div class="col-sm-2 text-center">
-          <img src="index_img/lunch.png" class="rounded-circle" height="65" width="65" alt="Avatar">
-        </div>
-        <div class="col-sm-10">
-          <h4>留言者姓名 <small>2021/12/28</small></h4>
-          <p class="">好吃之類的</p>
-          <form class="py-3">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="回覆留言...">
-              <div class="input-group-append">
-                <button class="btn btn-outline-success" type="submit">確認</button>
-              </div>
-            </div>
-          </form>
-          <p class="font-weight-bold"><span class="badge badge-secondary">1</span> 則回應:</p><br>
-          <div class="row">
-            <div class="col-sm-2 text-center">
-              <img src="index_img/chiahan.jpg" class="rounded-circle" height="65" width="65" alt="Avatar">
-            </div>
-            <div class="col-sm-10">
-              <h4>回覆者姓名<small> 2021/12/28</small></h4>
-              <p>Me too! WOW!</p>
-              <br>
-            </div>
-          </div>
-        </div>
+      @endforeach
       </div>
     </div>
   </div>

@@ -5,6 +5,7 @@ use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\BoardController;
 
 
 /*
@@ -29,6 +30,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('/',[RecipeController::class,'index']);
 Route::resource('recipe',RecipeController::class);
 Route::resource('member',MemberController::class);
+Route::resource('board',BoardController::class);
 Route::get('list',[RecipeController::class,'list']);
 Route::post('login', [LoginController::class,'login']);
 Route::get('login', [LoginController::class,'index']);

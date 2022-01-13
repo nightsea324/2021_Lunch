@@ -28,7 +28,6 @@
   <div class="container">
     <div class="row">
       <div class="col mx-auto py-4">
-        <h4 class="text-center font-weight-bold"><img src="index_img/edit.png" width="30" height="30" class="d-inline-block align-items-center" alt=""> 編輯食譜</h4>
       </div>
     </div>
     <!-- input group -->
@@ -65,6 +64,7 @@
           <div class="form-group">
             <label for="exampleFormControlTextarea1">詳細步驟說明</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="step"></textarea>
+            <input type="hidden" name="memberName" value={{$username}} >
           </div>
         </div>
         <div class="col-lg-4 mx-auto">
@@ -78,8 +78,8 @@
         <label for="exampleFormControlFile1">製作時間</label>
         <input type="text" class="form-control" placeholder="30分鐘">
       </div> -->
-      <button type="submit" class="btn btn-primary my-3">新增</button>
-    </form>
+        <button type="submit" class="btn btn-primary my-3">新增</button>
+      </form>
     <!-- input group -->
   </div>
 <!-- 內文結束 -->
