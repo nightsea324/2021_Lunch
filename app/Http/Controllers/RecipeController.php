@@ -81,7 +81,7 @@ class RecipeController extends Controller
             return view('index', ['err'=>"使用者不存在"]);
 
         }else{
-            return view('recipelist', compact('recipecases'));
+            return view('recipelist', compact('recipecases'),['username' => $username]);
         }
     }
     /**

@@ -30,7 +30,7 @@
 <div class="container-fluid bg-body">
   <div class="row">
     <div class="col-sm-4 bg-info rounded">
-      <h4 class="font-weight-bold py-3">相關食譜</h4>
+      <h4 class="font-weight-bold py-3">其他食譜</h4>
 			<div class="container">
 				<div class="row">
 					@foreach($otherrecipecases as $case)
@@ -53,10 +53,7 @@
       <h4><small>
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('recipe.index')}}">首頁</a></li>
-            <li class="breadcrumb-item"><a href="#">中式料理</a></li>
-            <li class="breadcrumb-item"><a href="#">米</a></li>
-            <li class="breadcrumb-item active" aria-current="page">炒飯</li>
+            <li class="breadcrumb-item"><a href="{{ route('recipe.index')}}"></a>首頁</li>
           </ol>
         </nav>
       </small></h4>

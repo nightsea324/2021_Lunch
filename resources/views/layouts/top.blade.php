@@ -36,11 +36,11 @@
 				<li class="nav-item align-item-center" style="width:5rem;">
 					<a class="nav-link" href="/list">我的食譜</a>
 				</li>
+				<li class="nav-item align-item-center" style="width:10rem;">					
+				</li>
 				@else
-				<li class="nav-item align-item-center" style="width:5rem;">					
-				</li>
-				<li class="nav-item align-item-center" style="width:5rem;">
-				</li>
+				<li class="nav-item align-item-center" style="width:20rem;">					
+				</li>				
 				@endif
 				<div class="container text-center">
 					<div class="row">
