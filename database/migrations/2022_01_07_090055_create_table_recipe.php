@@ -17,7 +17,7 @@ class CreateTableRecipe extends Migration
             $table->increments('recpieId');	
             $table->string('recipeName');
             $table->string('recpieclass')->nullable();
-            $table->string('memberId')->nullable();
+            $table->string('memberName');
             $table->string('ingredients');
             $table->string('step');
             $table->string('recpieimage')->nullable();

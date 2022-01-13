@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\models\Recipe;
+use DB;
 
 class RecipeController extends Controller
 {
@@ -28,7 +29,8 @@ class RecipeController extends Controller
     public function create()
     {
         //
-        return view('createrecipe');
+        $username = session('username');
+        return view('createrecipe', ['username' => $username]);
     }
 
     /**
@@ -42,6 +44,7 @@ class RecipeController extends Controller
         //
         $validatedData = $request->validate([
             'recipeName' => 'required|max:255',
+            'memberName' => 'required|max:255',
             'ingredients' => 'required|max:255',
             'step' => 'required|max:255',
         ]);
@@ -63,6 +66,20 @@ class RecipeController extends Controller
         return view('lookrecipe', compact('recipecases'));
     }
 
+    public function list()
+    {
+        //
+        DB::connection('mysql');
+        $username = session('username');
+        $recipecases = DB::select("SELECT * FROM recipes WHERE memberName=?", [$username]);
+        if(!isset($recipecases[0]->memberName)){
+
+            return view('index', ['err'=>"使用者不存在"]);
+
+        }else{
+            return view('recipelist', compact('recipecases'));
+        }
+    }
     /**
      * Show the form for editing the specified resource.
      *

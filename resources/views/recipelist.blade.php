@@ -54,9 +54,21 @@
 	<!-- 頁首結束 -->
     <!-- 內文 -->
     <div class="container">
-        <div class="">
-            以下是 炒飯 的結果
-        </div>
+		<div class="row">
+			@foreach($recipecases as $case)
+				<div class="col mx-auto py-4">	
+					<div class="card rounded" style="width: 19rem;">
+						<img class="card-img-top" src="index_img/chiahan.jpg" alt="Card image cap">
+						<div class="card-body">
+							<h5 class="card-title">{{$case->recipeName}}</h5>
+							<p class="card-text">{{$case->ingredients}}</p>
+							<a href="{{ route('recipe.show', $case->recpieId)}}" class="btn btn-primary">查看食譜</a>
+							<a href="{{ route('recipe.edit', $case->recpieId)}}" class="btn btn-primary">修改食譜</a>
+						</div>
+					</div>
+				</div>
+        	@endforeach
+		</div>
     </div>
     <!-- 內文 -->
 	<!-- 頁尾 -->

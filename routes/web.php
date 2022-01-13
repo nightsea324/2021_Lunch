@@ -29,6 +29,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('/',[RecipeController::class,'index']);
 Route::resource('recipe',RecipeController::class);
 Route::resource('member',MemberController::class);
+Route::get('list',[RecipeController::class,'list']);
 Route::post('login', [LoginController::class,'login']);
 Route::get('login', [LoginController::class,'index']);
 Route::get('logout', [LoginController::class,'logout']);

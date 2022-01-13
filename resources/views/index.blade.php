@@ -33,7 +33,7 @@
 					<a class="nav-link" href="{{ route('recipe.create')}}">新增食譜</a>
 				</li>
 				<li class="nav-item align-item-center" style="width:5rem;">
-					<a class="nav-link" href="part2.php">我的食譜</a>
+					<a class="nav-link" href="list">我的食譜</a>
 				</li>
 				@endif
 				<div class="container text-center">

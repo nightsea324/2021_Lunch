@@ -9,5 +9,5 @@ class recipe extends Model
 {
     use HasFactory;
     protected $primaryKey = "recpieId";
-    protected $fillable = ['recpieId', 'recipeName', 'recpieclass', 'memberId', 'ingredients', 'step','recpieimage'];
+    protected $fillable = ['recpieId', 'recipeName', 'recpieclass', 'memberName', 'ingredients', 'step','recpieimage'];
 }

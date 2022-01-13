@@ -19,35 +19,46 @@
 </head>
 <body>
 <!-- 頁首開始 -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <img src="index_img/lunch.png" width="30" height="30" class="d-inline-block align-top" alt="">
-    <a class="navbar-brand" href="{{ route('recipe.index')}}">午餐呷啥</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-      </button>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<img src="index_img/lunch.png" width="30" height="30" class="d-inline-block align-top" alt="">
+  		<a class="navbar-brand" href="{{ route('recipe.index')}}">午餐呷啥</a>
+  		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+  		</button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav w-100">
-        <li class="nav-item align-item-center" style="width:5rem;">
+  		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav w-100">
+				@if(isset($username))
+				<li class="nav-item align-item-center" style="width:5rem;">
 					<a class="nav-link" href="{{ route('recipe.create')}}">新增食譜</a>
 				</li>
 				<li class="nav-item align-item-center" style="width:5rem;">
 					<a class="nav-link" href="part2.php">我的食譜</a>
 				</li>
-        <div class="container text-center">
-          <div class="row">
-            <form class="form-inline">
-              <input class="form-control mr-sm-5" style="width:40em;" type="search" placeholder="請輸入食譜" aria-label="Search">
-              <button class="btn btn-outline-success my-3 my-sm-0" type="submit">搜尋食譜</button>
-            </form>
-          </div>
-        </div>
-        <li class="nav-item float-right" style="width:7rem;">
-          <a class="nav-link" href="login.php"><img src="index_img/enter.png" width="20" height="20" class="d-inline-block align-top" alt=""> 登入</a>
-        </li>
-      </ul>
-      </div>
-  </nav>
+				@endif
+				<div class="container text-center">
+					<div class="row">
+						<form class="form-inline">
+							<input class="form-control mr-sm-5" style="width:40em;" type="search" placeholder="請輸入食譜" aria-label="Search">
+							<button class="btn btn-outline-success my-3 my-sm-0" type="submit">搜尋食譜</button>
+						</form>
+					</div>
+				</div>
+				@if(isset($username))
+				<li class="nav-item float-right" style="width:10rem;">
+					<a class="nav-link" href="login"><img src="index_img/enter.png" width="20" height="20" class="d-inline-block align-top" alt=""> 歡迎，{{ $username }}</a>
+				</li>
+				<li class="nav-item float-right" style="width:7rem;">
+					<a class="nav-link" href="logout">登出</a>
+				</li>
+				@else
+				<li class="nav-item float-right" style="width:7rem;">
+					<a class="nav-link" href="login"><img src="index_img/enter.png" width="20" height="20" class="d-inline-block align-top" alt=""> 登入</a>
+				</li>
+				@endif
+			</ul>
+  		</div>
+	</nav>
   <!-- 頁首結束 -->
 <!-- 內文開始 -->
   <div class="container">
@@ -90,6 +101,7 @@
           <div class="form-group">
             <label for="exampleFormControlTextarea1">詳細步驟說明</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="step"></textarea>
+            <input type="hidden" name="memberName" value="NightSea" >
           </div>
         </div>
         <div class="col-lg-4 mx-auto">
