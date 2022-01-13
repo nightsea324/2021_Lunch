@@ -1,8 +1,9 @@
+@extends('layouts.onlytop')
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
 <meta charset="utf-8">
-	<title>首頁</title>
+	@section('title','會員登入')
 	<style type="text/css">
 			@import url(login.css);
 	</style>
@@ -18,81 +19,51 @@
 	<script src="index.js"></script>
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<img src="index_img/lunch.png" width="30" height="30" class="d-inline-block align-top" alt="">
-  		<a class="navbar-brand" href="{{ route('recipe.index')}}">午餐呷啥</a>
-  		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-  		</button>
-
-  		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav w-100">
-				<li class="nav-item align-item-center" style="width:5rem;">
-					<a class="nav-link" href="{{ route('recipe.create')}}">新增食譜</a>
-				</li>
-				<li class="nav-item align-item-center" style="width:5rem;">
-					<a class="nav-link" href="part2.php">我的食譜</a>
-				</li>
-				<div class="container text-center">
-					<div class="row">
-						<form class="form-inline">
-							<input class="form-control mr-sm-5" style="width:40em;" type="search" placeholder="請輸入食譜" aria-label="Search">
-							<button class="btn btn-outline-success my-3 my-sm-0" type="submit">搜尋食譜</button>
-						</form>
+	@yield('top')
+	@section('mid')
+		@parent
+			<!-- login begin -->
+			<section class="vh-100" style="background-color:#a6a6a6;">
+			<div class="container h-100">
+			<div class="row d-flex justify-content-center align-items-center h-100">
+			<div class="col-xl-9">
+				<h1 class="text-white mb-4 bg-info text-center" style="border-radius: 15px;">登入</h1>
+				<form method="post" action="login">
+					<div class="card" style="border-radius: 15px;">
+						<div class="card-body">
+							<div class="row align-items-center pt-4 pb-3">
+							<div class="col-md-3 ps-5">
+								<h6 class="mb-0">*請輸入帳號</h6>
+							</div>
+							<div class="col-md-9 pe-5">
+								<input type="text" class="form-control form-control-md" placeholder="請輸入姓名" required name="memberName">
+							</div>
+							</div>
+							<hr class="mx-n3">
+							<div class="row align-items-center py-3">
+							<div class="col-md-3 ps-5">
+								<h6 class="mb-0">*請輸入密碼</h6>
+							</div>
+							<div class="col-md-9 pe-5">
+								<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required name="memberPassword">
+							</div>
+							</div>
+							<hr class="mx-n3">
+							<div class="px-5 py-1">
+								<button type="submit" class="btn btn-primary btn-lg">登入</button>
+							</div>
+							<div class="px-5 py-1">
+							<a href="{{ route('register.index')}}"><button type="button" class="btn btn-primary btn-lg">註冊</button></a>
+							</div>
+							<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						</div>
 					</div>
-				</div>
-				<li class="nav-item float-right" style="width:7rem;">
-					<a class="nav-link" href="{{ route('member.index')}}"><img src="index_img/enter.png" width="20" height="20" class="d-inline-block align-top" alt=""> 登入</a>
-				</li>
-			</ul>
-  		</div>
-	</nav>
-
-	<!-- login begin -->
-	<section class="vh-100" style="background-color:#a6a6a6;">
-	<div class="container h-100">
-	<div class="row d-flex justify-content-center align-items-center h-100">
-	  <div class="col-xl-9">
-		<h1 class="text-white mb-4 bg-info text-center" style="border-radius: 15px;">登入</h1>
-		@if(isset($err))
-		{{ $err }}
-		@endif
-		<form method="post" action="login">
-			<div class="card" style="border-radius: 15px;">
-				<div class="card-body">
-					<div class="row align-items-center pt-4 pb-3">
-					<div class="col-md-3 ps-5">
-						<h6 class="mb-0">*請輸入帳號</h6>
-					</div>
-					<div class="col-md-9 pe-5">
-						<input type="text" class="form-control form-control-md" placeholder="請輸入姓名" required name="memberName">
-					</div>
-					</div>
-					<hr class="mx-n3">
-					<div class="row align-items-center py-3">
-					<div class="col-md-3 ps-5">
-						<h6 class="mb-0">*請輸入密碼</h6>
-					</div>
-					<div class="col-md-9 pe-5">
-						<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required name="memberPassword">
-					</div>
-					</div>
-					<hr class="mx-n3">
-					<div class="px-5 py-1">
-						<button type="submit" class="btn btn-primary btn-lg">登入</button>
-					</div>
-					<div class="px-5 py-1">
-					<a href="{{ route('register.index')}}"><button type="button" class="btn btn-primary btn-lg">註冊</button></a>
-					</div>
-					<input type="hidden" name="_token" value="{{ csrf_token() }}">
-				</div>
+				</form>
 			</div>
-		</form>
-	  </div>
-	</div>
-  </div>
-</section>
+			</div>
+		</div>
+		</section>
 	<!-- login end -->
-		
+	@endsection
 </body>
 </html>
