@@ -78,7 +78,7 @@ class RecipeController extends Controller
         $recipecases = DB::select("SELECT * FROM recipes WHERE memberName=?", [$username]);
         if(!isset($recipecases[0]->memberName)){
 
-            return view('index', ['err'=>"使用者不存在"]);
+            return view('recipelist', ['err'=>"使用者不存在",'username' => $username]);
 
         }else{
             return view('recipelist', compact('recipecases'),['username' => $username]);

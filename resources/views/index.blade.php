@@ -61,6 +61,7 @@
 			</div>
 			<div class="container">
 				<div class="row">
+				@if(isset($recipecases))
 					@foreach($recipecases as $case)
 						<div class="col mx-auto py-4">	
 							<div class="card rounded" style="width: 19rem;">
@@ -73,6 +74,15 @@
 							</div>
 						</div>
 					@endforeach
+				@else
+					<div class="col mx-auto py-4">
+						<div class="card rounded" style="width: 21rem;">
+							<div class="card-body">
+								<h5 class="card-title">目前無食譜</h5>
+							</div>
+						</div>	
+					</div>
+				@endif
 				</div>
 			</div>
 		@endsection
