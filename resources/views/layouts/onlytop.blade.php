@@ -44,8 +44,9 @@
 				@endif
 				<div class="container text-center">
 					<div class="row">
-						<form class="form-inline">
-							<input class="form-control mr-sm-5" style="width:40em;" type="search" placeholder="請輸入食譜" aria-label="Search">
+						<form class="form-inline" method="post" action="/search">
+							@csrf
+							<input class="form-control mr-sm-5" style="width:40em;" type="search" placeholder="請輸入食譜" aria-label="Search" name="searchName">
 							<button class="btn btn-outline-success my-3 my-sm-0" type="submit">搜尋食譜</button>
 						</form>
 					</div>

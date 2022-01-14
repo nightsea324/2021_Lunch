@@ -36,3 +36,4 @@ Route::post('login', [LoginController::class,'login']);
 Route::get('login', [LoginController::class,'index']);
 Route::get('logout', [LoginController::class,'logout']);
 Route::resource('register',RegisterController::class);
+Route::post('search',[RecipeController::class,'search']);

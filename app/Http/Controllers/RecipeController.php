@@ -131,4 +131,14 @@ class RecipeController extends Controller
         $username = session('username');
         return redirect('/recipe')->with('success', 'recipe Case Data is successfully deleted');
     }
+
+    public function search(Request $request)
+    {
+        //
+        DB::connection('mysql');
+        $username = session('username');
+        $searchName = '%'.$request->searchName.'%';
+        $recipecases = DB::select("SELECT * FROM recipes WHERE recipeName LIKE ?", [$searchName]);
+        return view('recipelist', compact('recipecases'),['username' => $username]);
+    }
 }
