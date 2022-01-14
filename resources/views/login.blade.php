@@ -28,6 +28,13 @@
 			<div class="row d-flex justify-content-center align-items-center h-100">
 			<div class="col-xl-9">
 				<h1 class="text-white mb-4 bg-info text-center" style="border-radius: 15px;">登入</h1>
+				@if(isset($err))
+				<div class="alert alert-danger">
+				<ul>
+					<li>{{ $err }}</li>
+				</ul>
+				</div><br/>
+				@endif
 				<form method="post" action="login">
 					<div class="card" style="border-radius: 15px;">
 						<div class="card-body">
