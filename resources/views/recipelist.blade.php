@@ -27,13 +27,17 @@
 			@foreach($recipecases as $case)
 				<div class="col mx-auto py-4">	
 					<div class="card rounded" style="width: 21rem;">
-						<img class="card-img-top" src="index_img/chiahan.jpg" alt="Card image cap">
+						<img class="card-img-top" src="/index_img/chiahan.jpg" alt="Card image cap">
 						<div class="card-body">
 							<h5 class="card-title">{{$case->recipeName}}</h5>
 							<p class="card-text">{{$case->ingredients}}</p>
-							<a href="{{ route('recipe.show', $case->recpieId)}}" class="btn btn-primary">查看食譜</a>
-							<a href="{{ route('recipe.edit', $case->recpieId)}}" class="btn btn-primary">修改食譜</a>
-							<a href="{{ route('recipe.destroy', $case->recpieId)}}" class="btn btn-primary">刪除食譜</a>
+							<form method="post" action="{{ route('recipe.destroy', $case->recpieId ) }}">
+								@csrf
+								@method('DELETE')
+								<a href="{{ route('recipe.show', $case->recpieId)}}" class="btn btn-primary">查看食譜</a>
+								<a href="{{ route('recipe.edit', $case->recpieId)}}" class="btn btn-primary">修改食譜</a>
+								<button type="submit" class="btn btn-danger">刪除食譜</button>
+							</form>
 						</div>
 					</div>
 				</div>
